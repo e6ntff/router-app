@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/router-app/static/css/main.adc031ec.css",
-    "main.js": "/router-app/static/js/main.16bd153f.js",
+    "main.js": "/router-app/static/js/main.f83c32af.js",
     "index.html": "/router-app/index.html",
     "main.adc031ec.css.map": "/router-app/static/css/main.adc031ec.css.map",
-    "main.16bd153f.js.map": "/router-app/static/js/main.16bd153f.js.map"
+    "main.f83c32af.js.map": "/router-app/static/js/main.f83c32af.js.map"
   },
   "entrypoints": [
     "static/css/main.adc031ec.css",
-    "static/js/main.16bd153f.js"
+    "static/js/main.f83c32af.js"
   ]
 }
