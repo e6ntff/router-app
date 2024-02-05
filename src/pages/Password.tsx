@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
-const Screen = styled.input`
-	background: #0000;
+export const Screen = styled.input<{ valid?: boolean }>`
+	background: ${({ valid }) =>
+		valid === undefined ? '#0000' : valid === true ? '#0f07' : '#f007'};
 	inline-size: 21rem;
 	padding: 0.5rem;
 	font-size: 2rem;
@@ -15,7 +16,7 @@ const Screen = styled.input`
 	text-align: center;
 `;
 
-const Button = styled.button`
+export const Button = styled.button`
 	background: #0000;
 	padding: 0.5rem;
 	font-size: 2rem;
@@ -25,6 +26,7 @@ const Button = styled.button`
 	border-radius: 0.5rem;
 	cursor: pointer;
 	transition: 0.15s;
+	text-transform: uppercase;
 
 	&:hover {
 		background: #bbb;
@@ -33,6 +35,10 @@ const Button = styled.button`
 
 const Password: React.FC = () => {
 	const [password, setPassword] = useState<string>('');
+
+	useEffect(() => {
+		getRandomPassword();
+	}, []);
 
 	const getRandomPassword = (length: number = 16) => {
 		const newPassword = new Array(length)
