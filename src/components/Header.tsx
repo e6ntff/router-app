@@ -14,7 +14,7 @@ const StyledHeader = styled.header`
 	padding: 1.5rem;
 `;
 
-const StyledList = styled.li`
+const StyledList = styled.ul`
 	list-style: none;
 	display: flex;
 	justify-content: space-between;
