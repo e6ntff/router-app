@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { Button } from './Password';
 import styled from 'styled-components';
 
@@ -25,22 +25,21 @@ const Input = styled.input`
 `;
 
 const ColorPicker: React.FC = () => {
-	const getRandomColor = () => {
+	const getRandomColor = useCallback(() => {
 		const [r, g, b] = [
 			Math.floor(Math.random() * 256),
 			Math.floor(Math.random() * 256),
 			Math.floor(Math.random() * 256),
 		];
-
 		return `rgb(${r}, ${g}, ${b})`;
-	};
+	}, []);
 
 	const [color, setColor] = useState<string>(getRandomColor());
 
-	const changeColor = () => {
+	const changeColor = useCallback(() => {
 		const newColor = getRandomColor();
 		setColor(newColor);
-	};
+	}, []);
 
 	return (
 		<>

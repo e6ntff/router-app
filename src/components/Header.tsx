@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import paths from '../utils/paths';
@@ -41,7 +41,10 @@ const StyledButton = styled.button`
 
 const Header: React.FC = () => {
 	const location = useLocation();
-	const isActivePath = (path: string) => path === location.pathname;
+	const isActivePath = useCallback(
+		(path: string) => path === location.pathname,
+		[]
+	);
 
 	return (
 		<StyledHeader>

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { Screen } from './Password';
 import useDebounce from '../hooks/useDebounce';
 
@@ -6,7 +6,7 @@ const CardCheck: React.FC = () => {
 	const [value, setValue] = useState<string>('');
 	const [valid, setValid] = useState<boolean | undefined>(undefined);
 
-	const isCardValid = (cardNumber: string) => {
+	const isCardValid = useCallback((cardNumber: string) => {
 		if (cardNumber.length !== 16) {
 			return undefined;
 		}
@@ -25,7 +25,7 @@ const CardCheck: React.FC = () => {
 			even = !even;
 		}
 		return sum % 10 === 0;
-	};
+	}, []);
 
 	const debouncedValue = useDebounce(value);
 
@@ -33,10 +33,13 @@ const CardCheck: React.FC = () => {
 		setValid(isCardValid(debouncedValue));
 	}, [debouncedValue, value]);
 
-	const changeValue = (event: React.ChangeEvent<HTMLInputElement>) => {
-		const { value } = event.target;
-		setValue(value);
-	};
+	const changeValue = useCallback(
+		(event: React.ChangeEvent<HTMLInputElement>) => {
+			const { value } = event.target;
+			setValue(value);
+		},
+		[]
+	);
 
 	return (
 		<>

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import styled from 'styled-components';
 
 export const Screen = styled.input<{ valid?: boolean }>`
@@ -40,14 +40,14 @@ const Password: React.FC = () => {
 		getRandomPassword();
 	}, []);
 
-	const getRandomPassword = (length: number = 16) => {
+	const getRandomPassword = useCallback((length: number = 16) => {
 		const newPassword = new Array(length)
 			.fill(undefined)
 			.map(() => String.fromCharCode(Math.random() * 86 + 40))
 			.join('');
 
 		setPassword(newPassword);
-	};
+	}, []);
 
 	return (
 		<>
